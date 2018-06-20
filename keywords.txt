@@ -1,0 +1,44 @@
+#######################################
+# Syntax Coloring Map 
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+QwiicRF	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+getPacketDestination	KEYWORD2
+getPacketID	KEYWORD2
+getPacketOrigin	KEYWORD2
+getPacketRSSI	KEYWORD2
+getPacketSNR	KEYWORD2
+getPairedAddress	KEYWORD2
+getPayloadSize	KEYWORD2
+getRFAddress	KEYWORD2
+getStatus	KEYWORD2
+getSyncWord	KEYWORD2
+hasPayload	KEYWORD2
+isReady	KEYWORD2
+read	KEYWORD2
+reliableFailed	KEYWORD2
+send	KEYWORD2
+sendReliable	KEYWORD2
+setI2CAddress	KEYWORD2
+setPairedAddress	KEYWORD2
+setRFAddress	KEYWORD2
+setReliableSendTimeout	KEYWORD2
+setReliableTimeout	KEYWORD2
+setSpreadFactor	KEYWORD2
+setSyncWord	KEYWORD2
+setTXPower	KEYWORD2
+waitingForAck	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
