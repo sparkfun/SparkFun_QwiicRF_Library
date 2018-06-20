@@ -1,14 +1,13 @@
 /*
-  This is a library written for the  
+  This is a library written for the QwiicRF LoRa Radio Module
   SparkFun sells these at its website: www.sparkfun.com
   Do you like this library? Help support SparkFun. Buy a board!
-  https://www.sparkfun.com/products/ 
+  https://www.sparkfun.com/products/14788 
 
-  Written by Nick Poole @ SparkFun Electronics,  
-
+  Written by Nick Poole @ SparkFun Electronics, June 20, 2018
  
-
-  https://github.com/sparkfun/ 
+  https://github.com/sparkfun/SparkFun_QwiicRF_Library
+  https://github.com/sparkfunX/Qwiic_RF
 
   Development environment specifics:
   Arduino IDE 1.8.3
@@ -32,8 +31,9 @@
 
 #include <Wire.h>
 
-//The default I2C address for the THING on the SparkX breakout is 0x69. 0x68 is also possible.
-#define DEFAULT_ADDRESS 0x69
+//The default I2C address for the QwiicRF is 0x35. This can be changed to 0x36 with a solder jumper
+//or to an arbitrary value using the setI2CAddress() function.
+#define DEFAULT_ADDRESS 0x35
 
 //Platform specific configurations
 
@@ -88,7 +88,10 @@
 #define COMMAND_SEND_PAIRED 0x20
 #define COMMAND_SEND_RELIABLE_PAIRED 0x30
 
-class GridEYE {
+//Bit Checking Macro
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
+
+class QwiicRF {
   public:
 
     // Return values
@@ -96,7 +99,36 @@ class GridEYE {
     //By default use the default I2C addres, and use Wire port
     void begin(uint8_t deviceAddress = DEFAULT_ADDRESS, TwoWire &wirePort = Wire);
 
-    void setI2CAddress(uint8_t addr); //Set the I2C address we read and write to
+	byte getStatus();
+	boolean hasPayload();
+	boolean isReady();
+	void setReliableTimeout(byte seconds);
+	boolean waitingForAck();
+	boolean reliableFailed();
+	
+	boolean send(byte rf_addr, String payload);
+	boolean send(String payload);
+	boolean sendReliable(byte rf_addr, String payload);
+	boolean sendReliable(String payload);
+	String read();
+	byte getPayloadSize();
+	
+	byte getSyncWord();
+	void setSyncWord(byte syncword);
+	byte getRFAddress();
+	void setRFAddress(byte addr);
+	byte getPairedAddress();
+	void setPairedAddress(byte addr);
+	void setSpreadFactor(byte sf);
+	void setReliableSendTimeout(byte seconds);
+	void setTXPower(byte power);
+	void setI2CAddress(byte addr);
+	
+	byte getPacketRSSI();
+	byte getPacketSNR();
+	byte getPacketOrigin();
+	byte getPacketDestination();
+	byte getPacketID();
 
   private:
   
