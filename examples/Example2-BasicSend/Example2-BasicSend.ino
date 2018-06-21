@@ -12,6 +12,9 @@
   Basic send using the .send() function provides no confirmation of delivery.
   The function will return false if the radio is busy.
 
+  The maximum payload size is limited by the size of the I2C buffer of the
+  QwiicRF (32 bytes)
+
   Hardware Resources:
   - SparkFun BlackBoard (https://www.sparkfun.com/products/14669)
   - QwiicRF Board (https://www.sparkfun.com/products/14788)

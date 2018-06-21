@@ -34,7 +34,7 @@ QwiicRF Radio;
 void setup() {
 
   Serial.begin(9600);
-  Radio.begin(0x35);
+  Radio.begin(0x36);
 
 }
 
