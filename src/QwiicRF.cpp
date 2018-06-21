@@ -27,6 +27,7 @@ void QwiicRF::begin(uint8_t deviceAddress, TwoWire &wirePort)
 {
   _deviceAddress = deviceAddress;
   _i2cPort = &wirePort;
+  _i2cPort->begin();
 }
 
 /********************************************************
@@ -88,7 +89,7 @@ boolean QwiicRF::isReady()
 }
 
 // Set the time in seconds before a reliable send operation fails
-void QwiicRF::setReliableTimeout(byte seconds)
+void QwiicRF::setReliableSendTimeout(byte seconds)
 {
   _i2cPort->beginTransmission(_deviceAddress);
   _i2cPort->write(COMMAND_SET_RELIABLE_TIMEOUT);
